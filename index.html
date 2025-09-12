@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -490,10 +491,10 @@
                 const probability = Math.random();
 
                 switch (difficulty) {
-                    case 'easy': // 초급: 이길 수 있으면 이기고, 나머지는 50% 확률로 막거나 랜덤
+                    case 'easy': // 초급: 이길 수 있으면 이기고, 나머지는 30% 확률로 막거나 랜덤
                         move = findWinningMove('O');
                         if (move === null) {
-                            if (probability < 0.5) { // 50% 확률로 방어
+                            if (probability < 0.3) { // 30% 확률로 방어
                                 move = findWinningMove('X');
                             }
                             if (move === null) {
@@ -502,12 +503,12 @@
                         }
                         break;
                     
-                    case 'medium': // 중급: 이길 수 있으면 이기고, 막을 수 있으면 막고, 나머지는 30% 확률로 랜덤
+                    case 'medium': // 중급: 이길 수 있으면 이기고, 막을 수 있으면 막고, 나머지는 15% 확률로 랜덤
                         move = findWinningMove('O'); // 1. 내가 이기는 수
                         if (move === null) {
                             move = findWinningMove('X'); // 2. 상대가 이기는 수 막기
                         }
-                        if (move !== null && probability < 0.3) { // 30% 확률로 최선의 수를 두지 않음
+                        if (move !== null && probability < 0.15) { // 15% 확률로 최선의 수를 두지 않음
                             move = getRandomMove([move]); // 최선의 수를 제외하고 랜덤
                         }
                         if (move === null) {
@@ -515,12 +516,12 @@
                         }
                         break;
 
-                    case 'hard': // 고급: 이길 수 있으면 이기고, 막을 수 있으면 막고, 10% 확률로만 랜덤
+                    case 'hard': // 고급: 이길 수 있으면 이기고, 막을 수 있으면 막고, 5% 확률로만 랜덤
                         move = findWinningMove('O');
                         if (move === null) {
                             move = findWinningMove('X');
                         }
-                        if (move !== null && probability < 0.1) { // 10% 확률로 실수
+                        if (move !== null && probability < 0.05) { // 5% 확률로 실수
                             move = getRandomMove([move]);
                         }
                         if (move === null) {
